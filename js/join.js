@@ -179,3 +179,60 @@ $("#year , #month, #date").focusout(function(){
     // $("#birth .warn").empty();
   }
 })
+
+
+// 성별
+// #gender .inputbox를 클릭 했을 때
+$("#gender .inputbox").click(function(e){
+  // radio의 기본 클릭동작 해제
+  e.preventDefault();
+  $("#gender .inputbox").removeClass('btn-primary');
+  $("#gender .inputbox input").removeAttr('checked');
+  // 내가 클릭하는 .inputbox한테 클래스, 속성 추가
+  $(this).addClass('btn-primary');
+  // 클릭된 .inputbox 에게 자식 input 데려와
+  $(this).children('input').attr('checked', 'checked');
+  genderveri = true;
+})
+
+// 본인 확인 이메일(선택)
+// #usermail input에서 focusout됐을 때
+$("#usermail input").focusout(function(){
+  let mail = $(this).val();
+  let redExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+  mailveri = true;
+  if(mail.length == 0) {
+    $("#usermail .warn").empty();
+  } else if(!redExp.test(mail)) {
+    $("#usermail .warn").html('<span class="text-red">이메일 주소를 다시 확인해주세요.</span>')
+    mailveri = false;
+  } else {
+    $("#usermail .warn").empty();
+  }
+})
+
+// 휴대전화
+// #phonenum input에서 focusout 됐을 때
+// 그것의 value.length가 0이라면 (조건1)
+// #phone .warn "필수 정보입니다." (실행문1)
+$("#phonenum input").focusout(function(){
+  if($(this).val().length == 0) {
+    $("#phone .warn").html('<span class="text-red">필수 정보입니다.</span>');
+  } else {
+    $("#phone .warn").empty();
+  }
+})
+
+// #veribtn을 클릭 했을 때
+$("#veribtn").click(function(){
+  let verifi = $("#phonenum input").val();
+  // 숫자를 제외한 모든 문자제거
+  // 문자열 치환 replace
+  verifi = verifi.replace(/[^0-9]/g, '');
+  $("#phonenum input").val(verifi);
+
+  // #phonenum input의 val().length가 10-11자리가 아니라면(조건1)
+  if(verifi.length < 10 ||  verifi.length > 11) {
+
+  }
+})

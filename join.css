@@ -9,6 +9,12 @@ a {
   color: #333;
 }
 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none; 
+  appearance: none;
+}
+
 .global-header {
   display: flex;
   justify-content: center;

@@ -71,7 +71,12 @@ a {
 
 .three-box .inputbox {
   width: calc((100% -20px) / 3);
+  /* margin-right: 7px; */
 }
+
+/* .three-box .inputbox:last-child {
+  margin-right: 0;
+} */
 
 .three-box .inputbox input {
   width: 100%;
@@ -148,4 +153,36 @@ a {
 
 .warn {
   margin: 15px 0;
+}
+
+.disagree {
+  width: 15px;
+  height: 15px;
+  position: relative;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.disagree::before,
+.disagree::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: red;
+  top: 50%;
+  left: 50%;
+}
+
+.disagree:before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.disagree:after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.border-red {
+  border-color: red;
 }
